@@ -10,7 +10,7 @@ MainWindow::MainWindow(QWidget *parent)
       new MoreApps(this, nullptr, "keshavnrj",
                    QUrl("https://raw.githubusercontent.com/keshavbhatt/appdata/"
                         "main/moreapps.txt"),
-                   false);
+                   false, true, 4);
   moreApps->setFixedHeight(120);
 
   QVBoxLayout *vl = new QVBoxLayout();

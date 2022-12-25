@@ -175,12 +175,13 @@ void MoreApps::applyRemoteFilter(const QUrl &remoteFilterUrl) {
 
   qDebug() << "getting remote filter...";
 
+  ui->loadingLabel->show();
+
   QNetworkRequest request(remoteFilterUrl);
   request.setAttribute(QNetworkRequest::CacheLoadControlAttribute,
                        QNetworkRequest::PreferCache);
 
   QNetworkReply *reply = mNetworkManager->get(QNetworkRequest(request));
-  ui->loadingLabel->show();
 
   connect(reply, &QNetworkReply::finished, this, [=]() {
     if (reply->error() == QNetworkReply::NoError) {
