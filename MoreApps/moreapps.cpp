@@ -14,11 +14,13 @@
 
 MoreApps::MoreApps(QWidget *parent, QNetworkAccessManager *nam,
                    const QString &publisherName, const QUrl &remoteFilterUrl,
-                   bool uIdebugMode, bool remoteIconPreCaching)
+                   bool uIdebugMode, bool remoteIconPreCaching,
+                   int proposedAppsToShow)
     : QWidget(parent), ui(new Ui::MoreApps),
       mFields("publisher,summary,title,media"), mPublisherName(publisherName),
       mRemoteFilterUrl(remoteFilterUrl), mUiDebugMode(uIdebugMode),
-      mRemoteIconPreCaching(remoteIconPreCaching) {
+      mRemoteIconPreCaching(remoteIconPreCaching),
+      proposedAppsToShow(proposedAppsToShow) {
 
   init(nam);
 }
@@ -318,10 +320,9 @@ int MoreApps::getAppsToShowCount() {
 
   int min = 0;
   int max = mAppList.count();
-  int proposed = 3;
 
-  if (max > min && max >= proposed) {
-    return proposed;
+  if (max > min && max >= proposedAppsToShow) {
+    return proposedAppsToShow;
   } else {
     return max;
   }

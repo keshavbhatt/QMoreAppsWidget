@@ -53,7 +53,7 @@ public:
   MoreApps(QWidget *parent = nullptr, QNetworkAccessManager *nam = nullptr,
            const QString &publisherName = "",
            const QUrl &remoteFilterUrl = QUrl(""), bool uIdebugMode = false,
-           bool remoteIconPreCaching = true);
+           bool remoteIconPreCaching = true, int proposedAppsToShow = 1);
   ~MoreApps();
 
 private slots:
@@ -85,6 +85,7 @@ private:
   QUrl mRemoteFilterUrl;
   bool mUiDebugMode;
   bool mRemoteIconPreCaching;
+  int proposedAppsToShow;
 
   QNetworkAccessManager *mNetworkManager = nullptr;
   QList<AppItem> mAppList;
